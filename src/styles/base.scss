@@ -1,0 +1,25 @@
+* {
+  box-sizing: border-box;
+}
+
+html {
+  font-size: 10px;
+}
+
+body {
+  margin: 0;
+  padding: 0 2rem;
+  font-family: $roboto-mono;
+  color: $gray;
+}
+
+h1, h2, h3, h4, h5, p {
+  margin: 0;
+  padding: 0;
+}
+
+.wrapper {
+  max-width: 80rem;
+  margin: 0 auto;
+  padding: 5rem 0;
+}

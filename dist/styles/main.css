@@ -1,0 +1,128 @@
+* {
+  box-sizing: border-box;
+}
+
+html {
+  font-size: 10px;
+}
+
+body {
+  margin: 0;
+  padding: 0 2rem;
+  font-family: "Roboto Mono", monospace;
+  color: #4A5859;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+p {
+  margin: 0;
+  padding: 0;
+}
+
+.wrapper {
+  max-width: 80rem;
+  margin: 0 auto;
+  padding: 5rem 0;
+}
+
+.form {
+  border: 0.01rem solid #4A5859;
+  padding: 5rem;
+  border-radius: 1.5rem;
+  box-shadow: 0 0.4rem 0.4rem rgba(0, 0, 0, 0.35);
+  background: linear-gradient(180deg, rgb(226, 213, 179) 0%, rgb(157, 145, 113) 100%);
+  margin-bottom: 8rem;
+  display: grid;
+  grid-gap: 1rem;
+}
+
+.form__title,
+.form__value {
+  max-width: 90%;
+  padding: 1.5rem 0 1.5rem 2rem;
+  border-radius: 1rem;
+  outline: none;
+  border: none;
+}
+
+.tasks {
+  border: 0.01rem solid gray;
+  border-radius: 1.5rem;
+  padding: 2rem;
+  box-shadow: 0 0.4rem 0.4rem rgba(0, 0, 0, 0.25);
+}
+
+.tasks__list {
+  list-style-type: none;
+  padding-left: 2rem;
+  display: grid;
+  grid-gap: 2rem;
+}
+
+.item {
+  display: grid;
+  grid-template-rows: repeat(3, -webkit-min-content);
+  grid-template-rows: repeat(3, min-content);
+  grid-template-columns: repeat(4, 1fr);
+  grid-gap: 1rem;
+}
+
+.item__title {
+  grid-column: 1/-1;
+  font-size: 1.6rem;
+}
+
+.item__text {
+  grid-column: 1/-1;
+  font-size: 1.2rem;
+}
+
+.item__delete {
+  grid-column: 4;
+  background: linear-gradient(45deg, rgb(164, 36, 59) 0%, rgb(205, 93, 113) 100%);
+  color: white;
+  padding: 0.7rem;
+  border-radius: 0.5rem;
+  outline: none;
+  border: none;
+  box-shadow: 0 0.2rem 0.4rem rgba(74, 88, 89, 0.35);
+  cursor: pointer;
+}
+
+.btn {
+  padding: 1.5rem 0;
+  border-radius: 1rem;
+  outline: none;
+  border: none;
+  max-width: 90%;
+  cursor: pointer;
+  box-shadow: 0 0.2rem 0.2rem rgba(0, 0, 0, 0.35);
+  transition: all 0.2s;
+}
+
+.btn:hover {
+  -webkit-transform: translateY(-0.3rem);
+  transform: translateY(-0.3rem);
+  box-shadow: 0 0.5rem 0.5rem rgba(0, 0, 0, 0.35);
+}
+
+.btn:active {
+  -webkit-transform: translateY(-0.1rem);
+  transform: translateY(-0.1rem);
+  box-shadow: 0 0.3rem 0.3rem rgba(0, 0, 0, 0.35);
+}
+
+.title {
+  font-size: 2.4rem;
+  margin-left: 2rem;
+}
+
+@media only screen and (max-width: 400px) {
+  .item__delete {
+    grid-column: 3/5;
+  }
+}

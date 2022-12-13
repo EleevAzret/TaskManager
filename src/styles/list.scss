@@ -1,0 +1,49 @@
+.tasks {
+  border: .01rem solid gray;
+  border-radius: 1.5rem;
+  padding: 2rem;
+  box-shadow: 0 .4rem .4rem rgba(black, .25);
+
+  &__list {
+    list-style-type: none;
+    padding-left: 2rem;
+    display: grid;
+    grid-gap: 2rem;
+  }
+}
+
+.item {
+  display: grid;
+  grid-template-rows: repeat(3, min-content);
+  grid-template-columns: repeat(4, 1fr);
+  grid-gap: 1rem;
+
+  &__title {
+    grid-column: 1 / -1;
+
+    font-size: 1.6rem;
+  }
+
+  &__text {
+    grid-column: 1 / -1;
+
+    font-size: 1.2rem;
+  }
+
+  &__delete {
+    grid-column: 4;
+
+    @include media-s {
+      grid-column: 3 / 5;
+    }
+
+    background: linear-gradient(45deg, rgba(164,36,59,1) 0%, rgba(205,93,113,1) 100%);
+    color: white;
+    padding: .7rem;
+    border-radius: .5rem;
+    outline: none;
+    border: none;
+    box-shadow: 0 .2rem .4rem rgba($gray, .35);
+    cursor: pointer;
+  }
+}
