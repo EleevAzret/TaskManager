@@ -28,7 +28,9 @@ let tasksArr = [
         form = document.forms['tasks'],
         titleArea = form.elements['title'],
         textArea = form.elements['text'],
-        noneMessage = list.querySelector('#none');
+        noneMessage = list.querySelector('#none'),
+        allTasksRadio = list.querySelector('#allTasks'),
+        notCompleteTasksRadio = list.querySelector('#notCompletedTasks');
 
   checkTaskList();
 
@@ -38,6 +40,8 @@ let tasksArr = [
   form.addEventListener('submit', onFormSubmit);
   list.addEventListener('click', deleteItem);
   list.addEventListener('click', checkComplete);
+  notCompleteTasksRadio.addEventListener('change', sortByNotComplete);
+  allTasksRadio.addEventListener('change', sortByNotComplete);
 
   //transform array of tasks in object for simply work
   function transformArrInObj(arr) {
@@ -55,12 +59,18 @@ let tasksArr = [
     }
 
     let values = Object.values(tasks);
+    let fragment = createTasksFragment(values);
+
+    list.appendChild(fragment);
+  };
+
+  function createTasksFragment(values) {
     let fragment = document.createDocumentFragment();
 
     values.forEach(e => fragment.appendChild(createElements(e)));
 
-    list.appendChild(fragment);
-  };
+    return fragment;
+  }
 
   //checked tasks object for elements
   function checkTaskList() {
@@ -71,10 +81,12 @@ let tasksArr = [
     }
   };
 
-  function createElements({_id ,title, body}) {
+  function createElements({_id ,title, body, completed}) {
     let item = document.createElement('li');
     item.classList.add('item');
     item.dataset.id = _id;
+
+    if(completed) item.classList.add('done');
 
     let h3 = document.createElement('h3');
     h3.classList.add('item__title');
@@ -169,6 +181,18 @@ let tasksArr = [
       taskObj[_id].completed = false;
       parent.classList.remove('done');
     }
+  };
+
+  function sortByNotComplete() {
+    if(!this.checked) return;
+
+    let tasks = list.querySelectorAll('.item');
+
+    tasks.forEach(e => {
+      if(taskObj[e.dataset.id].completed) {
+        e.classList.toggle('hide');
+      }
+    })
   }
 
   function generateRandomId() {
