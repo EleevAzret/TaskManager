@@ -10,6 +10,14 @@
     display: grid;
     grid-gap: 2rem;
   }
+
+  &__none {
+    font-size: 1.4rem;
+    display: none;
+    &.active {
+      display: inline-block;
+    }
+  }
 }
 
 .item {
@@ -30,14 +38,7 @@
     font-size: 1.2rem;
   }
 
-  &__delete {
-    grid-column: 4;
-
-    @include media-s {
-      grid-column: 3 / 5;
-    }
-
-    background: linear-gradient(45deg, rgba(164,36,59,1) 0%, rgba(205,93,113,1) 100%);
+  &__action {
     color: white;
     padding: .7rem;
     border-radius: .5rem;
@@ -45,5 +46,22 @@
     border: none;
     box-shadow: 0 .2rem .4rem rgba($gray, .35);
     cursor: pointer;
+
+    &_del {
+      background: linear-gradient(45deg, rgba(164,36,59,1) 0%, rgba(205,93,113,1) 100%);
+
+      grid-column: 4;
+
+      @include media-s {
+        grid-column: 3 / 5;
+      }
+    }
+
+    &_completed {
+      background: linear-gradient(45deg, rgba(221,188,70,1) 0%, rgba(255,225,118,1) 100%);
+
+      grid-row: 3;
+      grid-column: 1;
+    }
   }
 }

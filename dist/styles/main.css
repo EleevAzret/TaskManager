@@ -34,7 +34,7 @@ p {
   padding: 5rem;
   border-radius: 1.5rem;
   box-shadow: 0 0.4rem 0.4rem rgba(0, 0, 0, 0.35);
-  background: linear-gradient(180deg, rgb(226, 213, 179) 0%, rgb(157, 145, 113) 100%);
+  background: linear-gradient(48deg, rgb(178, 201, 171) 0%, rgb(154, 187, 176) 100%);
   margin-bottom: 8rem;
   display: grid;
   grid-gap: 1rem;
@@ -63,6 +63,15 @@ p {
   grid-gap: 2rem;
 }
 
+.tasks__none {
+  font-size: 1.4rem;
+  display: none;
+}
+
+.tasks__none.active {
+  display: inline-block;
+}
+
 .item {
   display: grid;
   grid-template-rows: repeat(3, -webkit-min-content);
@@ -81,9 +90,7 @@ p {
   font-size: 1.2rem;
 }
 
-.item__delete {
-  grid-column: 4;
-  background: linear-gradient(45deg, rgb(164, 36, 59) 0%, rgb(205, 93, 113) 100%);
+.item__action {
   color: white;
   padding: 0.7rem;
   border-radius: 0.5rem;
@@ -91,6 +98,17 @@ p {
   border: none;
   box-shadow: 0 0.2rem 0.4rem rgba(74, 88, 89, 0.35);
   cursor: pointer;
+}
+
+.item__action_del {
+  background: linear-gradient(45deg, rgb(164, 36, 59) 0%, rgb(205, 93, 113) 100%);
+  grid-column: 4;
+}
+
+.item__action_completed {
+  background: linear-gradient(45deg, rgb(221, 188, 70) 0%, rgb(255, 225, 118) 100%);
+  grid-row: 3;
+  grid-column: 1;
 }
 
 .btn {
@@ -122,7 +140,7 @@ p {
 }
 
 @media only screen and (max-width: 400px) {
-  .item__delete {
+  .item__action_del {
     grid-column: 3/5;
   }
 }

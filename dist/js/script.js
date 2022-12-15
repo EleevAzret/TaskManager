@@ -27,7 +27,10 @@ let tasksArr = [
   const list = document.querySelector('#list'),
         form = document.forms['tasks'],
         titleArea = form.elements['title'],
-        textArea = form.elements['text'];
+        textArea = form.elements['text'],
+        noneMessage = list.querySelector('#none');
+
+  checkTaskList();
 
   addAllTasks(taskObj);
 
@@ -35,6 +38,7 @@ let tasksArr = [
   form.addEventListener('submit', onFormSubmit);
   list.addEventListener('click', deleteItem);
 
+  //transform array of tasks in object for simply work
   function transformArrInObj(arr) {
     return arr.reduce((acc, e) => {
       acc[e._id] = e;
@@ -42,6 +46,7 @@ let tasksArr = [
       }, {});
   };
 
+  //added all tasks from start object in list
   function addAllTasks(tasks) {
     if(!tasks) {
       console.error('Pass Task-List');
@@ -54,7 +59,16 @@ let tasksArr = [
     values.forEach(e => fragment.appendChild(createElements(e)));
 
     list.appendChild(fragment);
-  }
+  };
+
+  //checked tasks object for elements
+  function checkTaskList() {
+    if(!Object.keys(taskObj).length) {
+      noneMessage.classList.add('active');
+    } else {
+      noneMessage.classList.remove('active');
+    }
+  };
 
   function createElements({_id ,title, body}) {
     let item = document.createElement('li');
@@ -69,13 +83,18 @@ let tasksArr = [
     article.classList.add('item__text');
     article.textContent = body;
 
-    let btn = document.createElement('button');
-    btn.classList.add('item__delete');
-    btn.textContent = 'Delete task';
+    let btnDel = document.createElement('button');
+    btnDel.classList.add('item__action', 'item__action_del');
+    btnDel.textContent = 'Delete task';
+
+    let btnCompleted = document.createElement('button');
+    btnCompleted.classList.add('item__action', 'item__action_completed');
+    btnCompleted.textContent = 'Complete task';
 
     item.appendChild(h3);
     item.appendChild(article);
-    item.appendChild(btn);
+    item.appendChild(btnDel);
+    item.appendChild(btnCompleted);
 
     return item;
   };
@@ -94,6 +113,7 @@ let tasksArr = [
     let task = addNewTask(title, body);
     let li = createElements(task);
 
+    checkTaskList();
     list.insertAdjacentElement('afterbegin', li);
     form.reset();
   };
@@ -115,7 +135,7 @@ let tasksArr = [
     if(target.type === 'submit') {
       confirmDelte(target.parentElement);
     }
-  }
+  };
 
   function confirmDelte(parent) {
     let _id = parent.dataset.id;
@@ -126,7 +146,9 @@ let tasksArr = [
 
     delete taskObj[_id];
     parent.remove();
-  }
+
+    checkTaskList();
+  };
 
   function generateRandomId() {
     let str = 'qwertyuiopasdfghjklzxcvbnm1234567890';
