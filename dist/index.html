@@ -12,14 +12,16 @@
 <body>
   <div class="wrapper">
     <form class="form" name="tasks">
-      <h2 class="title">New Task</h2>
+      <h2 class="title title_ml20">New Task</h2>
       <input type="text" name="title" class="form__title" placeholder="Your title">
       <input type="text" name="text" class="form__value" placeholder="Your value">
       <input type="submit" name="btn" class="btn" value="Create Task">
     </form>
     <div class="tasks">
-      <h2 class="title">Your Tasks</h2>
+      <h2 class="title tasks__title">Your Tasks</h2>
       <ul class="tasks__list" id="list">
+        <input type="radio" name="tasks" id="allTasks">
+        <input type="radio" name="tasks" id="notCompletedTasks">
         <span class="tasks__none" id="none">You dont have tasks</span>
       </ul>
     </div>

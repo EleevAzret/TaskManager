@@ -1,19 +1,19 @@
 let tasksArr = [
   {
     _id: 'b11pah9uscs2rjekz',
-    completed: true,
+    completed: false,
     title: 'Lorem ipsum dolor sit.',
     body: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Fugiat cumque dignissimos inventore harum quibusdam.',
   },
   {
     _id: 'ehfijb6bxoktof7i7',
-    completed: true,
+    completed: false,
     title: 'Lorem ipsum dolor.',
     body: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Tempora veniam id sit officia quaerat autem omnis, deleniti et quis!',
   },
   {
     _id: 'dbt6cns9jb7y45gfn',
-    completed: true,
+    completed: false,
     title: 'dolor sit.',
     body: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Soluta, quasi?',
   },
@@ -37,6 +37,7 @@ let tasksArr = [
   //events
   form.addEventListener('submit', onFormSubmit);
   list.addEventListener('click', deleteItem);
+  list.addEventListener('click', checkComplete);
 
   //transform array of tasks in object for simply work
   function transformArrInObj(arr) {
@@ -86,10 +87,12 @@ let tasksArr = [
     let btnDel = document.createElement('button');
     btnDel.classList.add('item__action', 'item__action_del');
     btnDel.textContent = 'Delete task';
+    btnDel.id = 'delete';
 
     let btnCompleted = document.createElement('button');
     btnCompleted.classList.add('item__action', 'item__action_completed');
     btnCompleted.textContent = 'Complete task';
+    btnCompleted.id = 'complete';
 
     item.appendChild(h3);
     item.appendChild(article);
@@ -132,7 +135,7 @@ let tasksArr = [
   };
 
   function deleteItem({target}) {
-    if(target.type === 'submit') {
+    if(target.id === 'delete') {
       confirmDelte(target.parentElement);
     }
   };
@@ -149,6 +152,24 @@ let tasksArr = [
 
     checkTaskList();
   };
+
+  function checkComplete({target}) {
+    if(target.id === 'complete') {
+      taskComplete(target.parentElement);
+    }
+  };
+
+  function taskComplete(parent) {
+    let _id = parent.dataset.id;
+
+    if(!taskObj[_id].completed) {
+      taskObj[_id].completed = true;
+      parent.classList.add('done');
+    } else {
+      taskObj[_id].completed = false;
+      parent.classList.remove('done');
+    }
+  }
 
   function generateRandomId() {
     let str = 'qwertyuiopasdfghjklzxcvbnm1234567890';

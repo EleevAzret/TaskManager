@@ -1,14 +1,27 @@
 .tasks {
-  border: .01rem solid gray;
-  border-radius: 1.5rem;
   padding: 2rem;
-  box-shadow: 0 .4rem .4rem rgba(black, .25);
+
+  display: grid;
+  grid-gap: 5rem;
+
+  &__title {
+    border: .01rem solid gray;
+    border-radius: 1.5rem;
+    padding: 2rem 0 2rem 3rem; 
+    box-shadow: 0 .4rem .4rem rgba(black, .25);
+    margin-left: 0;
+  }
 
   &__list {
     list-style-type: none;
     padding-left: 2rem;
     display: grid;
     grid-gap: 2rem;
+
+    border: .01rem solid gray;
+    border-radius: 1.5rem;
+    padding: 3rem;
+    box-shadow: 0 .4rem .4rem rgba(black, .25);
   }
 
   &__none {
@@ -25,6 +38,18 @@
   grid-template-rows: repeat(3, min-content);
   grid-template-columns: repeat(4, 1fr);
   grid-gap: 1rem;
+
+  &.done {
+    .item__title, .item__text {
+      text-decoration: line-through;
+    }
+
+    .item__action {
+      &_completed {
+        background: gray;
+      }
+    }
+  }
 
   &__title {
     grid-column: 1 / -1;

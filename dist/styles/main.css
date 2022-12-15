@@ -50,10 +50,17 @@ p {
 }
 
 .tasks {
+  padding: 2rem;
+  display: grid;
+  grid-gap: 5rem;
+}
+
+.tasks__title {
   border: 0.01rem solid gray;
   border-radius: 1.5rem;
-  padding: 2rem;
+  padding: 2rem 0 2rem 3rem;
   box-shadow: 0 0.4rem 0.4rem rgba(0, 0, 0, 0.25);
+  margin-left: 0;
 }
 
 .tasks__list {
@@ -61,6 +68,10 @@ p {
   padding-left: 2rem;
   display: grid;
   grid-gap: 2rem;
+  border: 0.01rem solid gray;
+  border-radius: 1.5rem;
+  padding: 3rem;
+  box-shadow: 0 0.4rem 0.4rem rgba(0, 0, 0, 0.25);
 }
 
 .tasks__none {
@@ -78,6 +89,15 @@ p {
   grid-template-rows: repeat(3, min-content);
   grid-template-columns: repeat(4, 1fr);
   grid-gap: 1rem;
+}
+
+.item.done .item__title,
+.item.done .item__text {
+  text-decoration: line-through;
+}
+
+.item.done .item__action_completed {
+  background: gray;
 }
 
 .item__title {
@@ -136,6 +156,9 @@ p {
 
 .title {
   font-size: 2.4rem;
+}
+
+.title_ml20 {
   margin-left: 2rem;
 }
 
