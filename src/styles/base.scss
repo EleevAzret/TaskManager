@@ -11,6 +11,8 @@ body {
   padding: 0 2rem;
   font-family: $roboto-mono;
   color: $gray;
+  position: relative;
+  z-index: -10;
 }
 
 h1, h2, h3, h4, h5, p {
@@ -22,4 +24,6 @@ h1, h2, h3, h4, h5, p {
   max-width: 80rem;
   margin: 0 auto;
   padding: 5rem 0;
+  position: relative;
+  z-index: -10;
 }

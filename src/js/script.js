@@ -40,8 +40,8 @@ let tasksArr = [
   form.addEventListener('submit', onFormSubmit);
   list.addEventListener('click', deleteItem);
   list.addEventListener('click', checkComplete);
-  notCompleteTasksRadio.addEventListener('change', sortByNotComplete);
-  allTasksRadio.addEventListener('change', sortByNotComplete);
+  notCompleteTasksRadio.addEventListener('change', sortTasks);
+  allTasksRadio.addEventListener('change', sortTasks);
 
   //transform array of tasks in object for simply work
   function transformArrInObj(arr) {
@@ -183,14 +183,15 @@ let tasksArr = [
     }
   };
 
-  function sortByNotComplete() {
+  function sortTasks(event) {
     if(!this.checked) return;
 
     let tasks = list.querySelectorAll('.item');
 
     tasks.forEach(e => {
       if(taskObj[e.dataset.id].completed) {
-        e.classList.toggle('hide');
+        if(event.target.id === 'notCompletedTasks') e.classList.add('hide');
+        if(event.target.id === 'allTasks') e.classList.remove('hide');
       }
     })
   }

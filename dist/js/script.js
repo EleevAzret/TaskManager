@@ -183,14 +183,15 @@ let tasksArr = [
     }
   };
 
-  function sortByNotComplete() {
+  function sortByNotComplete(event) {
     if(!this.checked) return;
 
     let tasks = list.querySelectorAll('.item');
 
     tasks.forEach(e => {
       if(taskObj[e.dataset.id].completed) {
-        e.classList.toggle('hide');
+        if(event.target.id === 'notCompletedTasks') e.classList.add('hide');
+        if(event.target.id === 'allTasks') e.classList.remove('hide');
       }
     })
   }

@@ -11,6 +11,8 @@ body {
   padding: 0 2rem;
   font-family: "Roboto Mono", monospace;
   color: #4A5859;
+  position: relative;
+  z-index: -10;
 }
 
 h1,
@@ -27,6 +29,8 @@ p {
   max-width: 80rem;
   margin: 0 auto;
   padding: 5rem 0;
+  position: relative;
+  z-index: -10;
 }
 
 .form {
@@ -53,6 +57,8 @@ p {
   padding: 2rem;
   display: grid;
   grid-gap: 5rem;
+  position: relative;
+  z-index: -5;
 }
 
 .tasks__title {
@@ -61,13 +67,15 @@ p {
   padding: 2rem 0 2rem 3rem;
   box-shadow: 0 0.4rem 0.4rem rgba(0, 0, 0, 0.25);
   margin-left: 0;
+  background-color: #fffcf9;
 }
 
 .tasks__list {
   list-style-type: none;
-  padding-left: 2rem;
   display: grid;
   grid-gap: 2rem;
+  position: relative;
+  background-color: #fffcf9;
   border: 0.01rem solid gray;
   border-radius: 1.5rem;
   padding: 3rem;
@@ -89,19 +97,6 @@ p {
   grid-template-rows: repeat(3, min-content);
   grid-template-columns: repeat(4, 1fr);
   grid-gap: 1rem;
-}
-
-.item.done .item__title,
-.item.done .item__text {
-  text-decoration: line-through;
-}
-
-.item.done .item__action_completed {
-  background: gray;
-}
-
-.item.hide {
-  display: none;
 }
 
 .item__title {
@@ -135,6 +130,19 @@ p {
   grid-column: 1;
 }
 
+.item.done .item__title,
+.item.done .item__text {
+  text-decoration: line-through;
+}
+
+.item.done .item__action_completed {
+  background: gray;
+}
+
+.item.hide {
+  display: none;
+}
+
 .btn {
   padding: 1.5rem 0;
   border-radius: 1rem;
@@ -156,6 +164,52 @@ p {
   -webkit-transform: translateY(-0.1rem);
   transform: translateY(-0.1rem);
   box-shadow: 0 0.3rem 0.3rem rgba(0, 0, 0, 0.35);
+}
+
+.radioBtn {
+  position: absolute;
+  top: -4rem;
+  width: 15rem;
+  height: 4rem;
+  z-index: -1;
+}
+
+.radioBtn:checked::after {
+  box-shadow: inset 0.5rem -0.4rem 1rem rgba(0, 0, 0, 0.35), inset -0.5rem -0.4rem 1rem rgba(0, 0, 0, 0.35);
+  background-color: #fff9f4;
+}
+
+.radioBtn_notCompletedTasks {
+  left: 17rem;
+}
+
+.radioBtn_notCompletedTasks::after {
+  content: "Not completed";
+  border-top-right-radius: 1.5rem;
+}
+
+.radioBtn_allTasks {
+  left: 2rem;
+}
+
+.radioBtn_allTasks::after {
+  content: "All tasks";
+  border-top-left-radius: 1.5rem;
+}
+
+.radioBtn::after {
+  width: 15rem;
+  height: 4rem;
+  background-color: #fffcf9;
+  position: absolute;
+  top: 0;
+  left: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 1.5rem;
+  box-shadow: inset 0 -0.5rem 0.4rem rgba(0, 0, 0, 0.35);
+  pointer-events: none;
 }
 
 .title {

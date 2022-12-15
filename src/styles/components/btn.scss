@@ -18,3 +18,51 @@
     box-shadow: 0 .3rem .3rem rgba(black, .35);
   }
 }
+
+.radioBtn {
+  position: absolute;
+  top: -4rem;
+  width: 15rem;
+  height: 4rem;
+  z-index: -1;
+
+  &:checked {
+    &::after {
+      box-shadow: inset .5rem -.4rem 1rem rgba(black, .35), inset -.5rem -.4rem 1rem rgba(black, .35);
+      background-color: darken($white, 1);
+    }
+  }
+
+  &_notCompletedTasks {
+    left: 17rem;
+
+    &::after {
+      content: "Not completed";
+      border-top-right-radius: 1.5rem;
+    }
+  }
+
+  &_allTasks {
+    left: 2rem;
+
+    &::after {
+      content: "All tasks";
+      border-top-left-radius: 1.5rem;
+    }
+  }
+
+  &::after {
+    width: 15rem;
+    height: 4rem;
+    background-color: $white;
+    position: absolute;
+    top: 0;
+    left: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 1.5rem;
+    box-shadow: inset 0 -.5rem .4rem rgba(black, .35);
+    pointer-events: none;
+  }
+}
