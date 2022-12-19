@@ -1,3 +1,15 @@
+:root {
+  --main-bg-color: #4b5563;
+  --form-bg-gradient-color-light: #536b78;
+  --form-bg-gradient-color-dark: #242e33;
+  --element-color: #b4b4b4;
+  --text-color: #f3f3f3;
+  --complete-bg-color-light: #cfb043;
+  --complete-bg-color-dark: #b1911f;
+  --delete-bg-color-light: #9f5260;
+  --delete-bg-color-dark: #7c1c2e;
+}
+
 * {
   box-sizing: border-box;
 }
@@ -10,9 +22,10 @@ body {
   margin: 0;
   padding: 0 2rem;
   font-family: $roboto-mono;
-  color: $gray;
+  color: var(--text-color);
   position: relative;
   z-index: -10;
+  background-color: var(--main-bg-color);
 }
 
 h1, h2, h3, h4, h5, p {
@@ -23,7 +36,7 @@ h1, h2, h3, h4, h5, p {
 .wrapper {
   max-width: 80rem;
   margin: 0 auto;
-  padding: 5rem 0;
+  padding: 10rem 0;
   position: relative;
   z-index: -10;
 }

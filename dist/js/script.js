@@ -19,7 +19,33 @@ let tasksArr = [
   },
 ];
 
-;(function creatingTask(tasks) {
+let colors = {
+  light: {
+  '--main-bg-color': '#f6f6f6',
+  '--form-bg-gradient-color-light': '#b2c9ab',
+  '--form-bg-gradient-color-dark': '#9abbb0',
+  '--element-color': '#fffcf9',
+  '--text-color': '#4A5859',
+  '--complete-bg-color-light': '#ffe176',
+  '--complete-bg-color-dark': '#ddbc46',
+  '--delete-bg-color-light': '#cd5d71',
+  '--delete-bg-color-dark': '#a4243b',
+  },
+  dark: {
+    '--main-bg-color': '#4b5563',
+    '--form-bg-gradient-color-light': '#536b78',
+    '--form-bg-gradient-color-dark': '#242e33',
+    '--element-color': '#b4b4b4',
+    '--text-color': '#f3f3f3',
+    '--complete-bg-color-light': '#cfb043',
+    '--complete-bg-color-dark': '#b1911f',
+    '--delete-bg-color-light': '#9f5260',
+    '--delete-bg-color-dark': '#7c1c2e',
+  }
+};
+
+;(function creatingTask(tasks, colors) {
+  setTheme();
   //transform tasks array in tasks object for simply work
   let taskObj = transformArrInObj(tasks);
 
@@ -30,7 +56,9 @@ let tasksArr = [
         textArea = form.elements['text'],
         noneMessage = list.querySelector('#none'),
         allTasksRadio = list.querySelector('#allTasks'),
-        notCompleteTasksRadio = list.querySelector('#notCompletedTasks');
+        notCompleteTasksRadio = list.querySelector('#notCompletedTasks'),
+        colorThemeLight = document.querySelector('#light');
+        colorThemeDark = document.querySelector('#dark');
 
   checkTaskList();
 
@@ -40,8 +68,10 @@ let tasksArr = [
   form.addEventListener('submit', onFormSubmit);
   list.addEventListener('click', deleteItem);
   list.addEventListener('click', checkComplete);
-  notCompleteTasksRadio.addEventListener('change', sortByNotComplete);
-  allTasksRadio.addEventListener('change', sortByNotComplete);
+  notCompleteTasksRadio.addEventListener('change', sortTasks);
+  allTasksRadio.addEventListener('change', sortTasks);
+  colorThemeLight.addEventListener('change', changeColors);
+  colorThemeDark.addEventListener('change', changeColors);
 
   //transform array of tasks in object for simply work
   function transformArrInObj(arr) {
@@ -183,7 +213,7 @@ let tasksArr = [
     }
   };
 
-  function sortByNotComplete(event) {
+  function sortTasks(event) {
     if(!this.checked) return;
 
     let tasks = list.querySelectorAll('.item');
@@ -194,7 +224,18 @@ let tasksArr = [
         if(event.target.id === 'allTasks') e.classList.remove('hide');
       }
     })
-  }
+  };
+
+  function changeColors(event) {
+    setTheme(event.target.id);
+  };
+
+  function setTheme(id = 'light') {
+    let theme = Object.entries(colors[id]);
+    theme.forEach(([key, value]) => {
+      document.body.style.setProperty(key, value);
+    });
+  };
 
   function generateRandomId() {
     let str = 'qwertyuiopasdfghjklzxcvbnm1234567890';
@@ -207,4 +248,4 @@ let tasksArr = [
     
     return res;
   };
-})(tasksArr);
+})(tasksArr, colors);

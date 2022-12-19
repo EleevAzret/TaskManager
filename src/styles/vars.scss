@@ -1,7 +1,6 @@
 $roboto-mono: 'Roboto Mono', monospace;
 
-$gray: #4A5859;
-$white: #fffcf9;
+$gray: var(--text-color);
 
 @mixin media-s {
   @media only screen and (max-width: 400px) {

@@ -1,3 +1,15 @@
+:root {
+  --main-bg-color: #4b5563;
+  --form-bg-gradient-color-light: #536b78;
+  --form-bg-gradient-color-dark: #242e33;
+  --element-color: #b4b4b4;
+  --text-color: #f3f3f3;
+  --complete-bg-color-light: #cfb043;
+  --complete-bg-color-dark: #b1911f;
+  --delete-bg-color-light: #9f5260;
+  --delete-bg-color-dark: #7c1c2e;
+}
+
 * {
   box-sizing: border-box;
 }
@@ -10,9 +22,10 @@ body {
   margin: 0;
   padding: 0 2rem;
   font-family: "Roboto Mono", monospace;
-  color: #4A5859;
+  color: var(--text-color);
   position: relative;
   z-index: -10;
+  background-color: var(--main-bg-color);
 }
 
 h1,
@@ -28,17 +41,17 @@ p {
 .wrapper {
   max-width: 80rem;
   margin: 0 auto;
-  padding: 5rem 0;
+  padding: 10rem 0;
   position: relative;
   z-index: -10;
 }
 
 .form {
-  border: 0.01rem solid #4A5859;
+  border: 0.01rem solid var(--text-color);
   padding: 5rem;
   border-radius: 1.5rem;
   box-shadow: 0 0.4rem 0.4rem rgba(0, 0, 0, 0.35);
-  background: linear-gradient(48deg, rgb(178, 201, 171) 0%, rgb(154, 187, 176) 100%);
+  background: linear-gradient(48deg, var(--form-bg-gradient-color-light), var(--form-bg-gradient-color-light));
   margin-bottom: 8rem;
   display: grid;
   grid-gap: 1rem;
@@ -62,12 +75,12 @@ p {
 }
 
 .tasks__title {
-  border: 0.01rem solid gray;
+  border: 0.01rem solid var(--text-color);
   border-radius: 1.5rem;
   padding: 2rem 0 2rem 3rem;
   box-shadow: 0 0.4rem 0.4rem rgba(0, 0, 0, 0.25);
   margin-left: 0;
-  background-color: #fffcf9;
+  background-color: var(--element-color);
 }
 
 .tasks__list {
@@ -75,8 +88,8 @@ p {
   display: grid;
   grid-gap: 2rem;
   position: relative;
-  background-color: #fffcf9;
-  border: 0.01rem solid gray;
+  background-color: var(--element-color);
+  border: 0.01rem solid var(--text-color);
   border-radius: 1.5rem;
   padding: 3rem;
   box-shadow: 0 0.4rem 0.4rem rgba(0, 0, 0, 0.25);
@@ -115,17 +128,17 @@ p {
   border-radius: 0.5rem;
   outline: none;
   border: none;
-  box-shadow: 0 0.2rem 0.4rem rgba(74, 88, 89, 0.35);
+  box-shadow: 0 0.2rem 0.4rem rgba(var(--text-color), 0.35);
   cursor: pointer;
 }
 
 .item__action_del {
-  background: linear-gradient(45deg, rgb(164, 36, 59) 0%, rgb(205, 93, 113) 100%);
+  background: linear-gradient(45deg, var(--delete-bg-color-dark), var(--delete-bg-color-light) 100%);
   grid-column: 4;
 }
 
 .item__action_completed {
-  background: linear-gradient(45deg, rgb(221, 188, 70) 0%, rgb(255, 225, 118) 100%);
+  background: linear-gradient(45deg, var(--complete-bg-color-dark), var(--complete-bg-color-light));
   grid-row: 3;
   grid-column: 1;
 }
@@ -152,6 +165,11 @@ p {
   cursor: pointer;
   box-shadow: 0 0.2rem 0.2rem rgba(0, 0, 0, 0.35);
   transition: all 0.2s;
+  background-color: var(--element-color);
+  color: var(--text-color);
+  font-size: 1.4rem;
+  letter-spacing: 0.15rem;
+  font-weight: 600;
 }
 
 .btn:hover {
@@ -172,11 +190,12 @@ p {
   width: 15rem;
   height: 4rem;
   z-index: -1;
+  color: var(--text-color);
 }
 
 .radioBtn:checked::after {
   box-shadow: inset 0.5rem -0.4rem 1rem rgba(0, 0, 0, 0.35), inset -0.5rem -0.4rem 1rem rgba(0, 0, 0, 0.35);
-  background-color: #fff9f4;
+  background-color: var(--element-color);
 }
 
 .radioBtn_notCompletedTasks {
@@ -200,7 +219,7 @@ p {
 .radioBtn::after {
   width: 15rem;
   height: 4rem;
-  background-color: #fffcf9;
+  background-color: var(--element-color);
   position: absolute;
   top: 0;
   left: 0;
@@ -210,6 +229,50 @@ p {
   font-size: 1.5rem;
   box-shadow: inset 0 -0.5rem 0.4rem rgba(0, 0, 0, 0.35);
   pointer-events: none;
+}
+
+.color-theme {
+  position: absolute;
+  right: 0;
+  top: 3rem;
+}
+
+.color-theme__btn {
+  width: 5rem;
+  height: 3rem;
+  transition: all 0.2s;
+  cursor: pointer;
+}
+
+.color-theme__btn::after {
+  content: "";
+  border-radius: 5rem;
+  background-repeat: no-repeat;
+  background-position: center;
+  width: 5rem;
+  height: 3rem;
+  position: absolute;
+  box-shadow: 0 0.4rem 0.4rem rgba(0, 0, 0, 0.35);
+  transition: all 0.2s;
+}
+
+.color-theme__btn_light::after {
+  background-image: url("../img/sun.svg");
+  background-color: #ffffff;
+}
+
+.color-theme__btn_dark::after {
+  background-image: url("../img/moon.svg");
+  background-color: #5e6a7b;
+}
+
+.color-theme__btn:checked {
+  -webkit-transform: translateY(0.2rem);
+  transform: translateY(0.2rem);
+}
+
+.color-theme__btn:checked::after {
+  box-shadow: 0 0.1rem 0.2rem rgba(0, 0, 0, 0.35);
 }
 
 .title {
@@ -222,6 +285,18 @@ p {
 
 @media only screen and (max-width: 400px) {
   .item__action_del {
-    grid-column: 3/5;
+    grid-column: 3/span 2;
+  }
+
+  .item__action_completed {
+    grid-column: 1/span 2;
+  }
+
+  .radioBtn_notCompletedTasks {
+    left: 15rem;
+  }
+
+  .radioBtn_allTasks {
+    left: 0rem;
   }
 }
