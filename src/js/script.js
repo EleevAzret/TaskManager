@@ -172,7 +172,7 @@ let colors = {
     };
 
     taskObj[task._id] = task;
-    localStorage.setItem('tasks', JSON.stringify(taskObj));
+    reWriteTaskObj();
 
     return task;
   };
@@ -191,8 +191,8 @@ let colors = {
     if(!isConfirm) return;
 
     delete taskObj[_id];
-    localStorage.setItem('tasks', JSON.stringify(taskObj));
-    
+    reWriteTaskObj();
+
     parent.remove();
 
     checkTaskList();
@@ -209,9 +209,11 @@ let colors = {
 
     if(!taskObj[_id].completed) {
       taskObj[_id].completed = true;
+      reWriteTaskObj();
       parent.classList.add('done');
     } else {
       taskObj[_id].completed = false;
+      reWriteTaskObj();
       parent.classList.remove('done');
     }
   };
@@ -253,4 +255,8 @@ let colors = {
     
     return res;
   };
+
+  function reWriteTaskObj() {
+    localStorage.setItem('tasks', JSON.stringify(taskObj));
+  }
 })(tasksArr, colors);
