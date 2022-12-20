@@ -45,9 +45,8 @@ let colors = {
 };
 
 ;(function creatingTask(tasks, colors) {
-  setTheme();
   //transform tasks array in tasks object for simply work
-  let taskObj = transformArrInObj(tasks);
+  let taskObj = JSON.parse(localStorage.getItem('tasks')) || transformArrInObj(tasks);
 
   //select DOM elements
   const list = document.querySelector('#list'),
@@ -63,6 +62,7 @@ let colors = {
   checkTaskList();
 
   addAllTasks(taskObj);
+  setTheme(localStorage.getItem('appTheme') || 'light');
 
   //events
   form.addEventListener('submit', onFormSubmit);
@@ -172,6 +172,7 @@ let colors = {
     };
 
     taskObj[task._id] = task;
+    localStorage.setItem('tasks', JSON.stringify(taskObj));
 
     return task;
   };
@@ -190,6 +191,8 @@ let colors = {
     if(!isConfirm) return;
 
     delete taskObj[_id];
+    localStorage.setItem('tasks', JSON.stringify(taskObj));
+    
     parent.remove();
 
     checkTaskList();
@@ -228,13 +231,15 @@ let colors = {
 
   function changeColors(event) {
     setTheme(event.target.id);
+    localStorage.setItem('appTheme', event.target.id);
   };
 
-  function setTheme(id = 'light') {
+  function setTheme(id) {
     let theme = Object.entries(colors[id]);
     theme.forEach(([key, value]) => {
       document.body.style.setProperty(key, value);
     });
+    document.querySelector(`#${id}`).checked = true;
   };
 
   function generateRandomId() {
