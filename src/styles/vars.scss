@@ -1,6 +1,15 @@
 $roboto-mono: 'Roboto Mono', monospace;
 
-$gray: var(--text-color);
+$text-color: var(--text-color);
+$main-bg-color: var(--main-bg-color);
+$form-bg-color-light: var(--form-bg-gradient-color-light);
+$form-bg-color-dark: var(--form-bg-gradient-color-dark);
+$element-color: var(--element-color);
+$complete-btn-color-light: var(--complete-bg-color-light);
+$complete-btn-color-dark: var(--complete-bg-color-dark);
+$delete-btn-color-light: var(--delete-bg-color-light);
+$delete-btn-color-dark: var(--delete-bg-color-dark);
+
 
 @mixin media-s {
   @media only screen and (max-width: 400px) {

@@ -2,7 +2,7 @@
   --main-bg-color: #4b5563;
   --form-bg-gradient-color-light: #536b78;
   --form-bg-gradient-color-dark: #242e33;
-  --element-color: #b4b4b4;
+  --element-color: #8992a9;
   --text-color: #f3f3f3;
   --complete-bg-color-light: #cfb043;
   --complete-bg-color-dark: #b1911f;
@@ -47,11 +47,10 @@ p {
 }
 
 .form {
-  border: 0.01rem solid var(--text-color);
   padding: 5rem;
   border-radius: 1.5rem;
   box-shadow: 0 0.4rem 0.4rem rgba(0, 0, 0, 0.35);
-  background: linear-gradient(48deg, var(--form-bg-gradient-color-light), var(--form-bg-gradient-color-light));
+  background: linear-gradient(48deg, var(--form-bg-gradient-color-light), var(--form-bg-gradient-color-dark));
   margin-bottom: 8rem;
   display: grid;
   grid-gap: 1rem;
@@ -75,7 +74,6 @@ p {
 }
 
 .tasks__title {
-  border: 0.01rem solid var(--text-color);
   border-radius: 1.5rem;
   padding: 2rem 0 2rem 3rem;
   box-shadow: 0 0.4rem 0.4rem rgba(0, 0, 0, 0.25);
@@ -89,7 +87,6 @@ p {
   grid-gap: 2rem;
   position: relative;
   background-color: var(--element-color);
-  border: 0.01rem solid var(--text-color);
   border-radius: 1.5rem;
   padding: 3rem;
   box-shadow: 0 0.4rem 0.4rem rgba(0, 0, 0, 0.25);
@@ -133,12 +130,12 @@ p {
 }
 
 .item__action_del {
-  background: linear-gradient(45deg, var(--delete-bg-color-dark), var(--delete-bg-color-light) 100%);
+  background: linear-gradient(45deg, var(--delete-bg-color-light), var(--delete-bg-color-dark) 100%);
   grid-column: 4;
 }
 
 .item__action_completed {
-  background: linear-gradient(45deg, var(--complete-bg-color-dark), var(--complete-bg-color-light));
+  background: linear-gradient(45deg, var(--complete-bg-color-light), var(--complete-bg-color-dark));
   grid-row: 3;
   grid-column: 1;
 }

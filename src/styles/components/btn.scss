@@ -7,8 +7,8 @@
   cursor: pointer;
   box-shadow: 0 .2rem .2rem rgba(black, .35);
   transition: all .2s;
-  background-color: var(--element-color);
-  color: var(--text-color);
+  background-color: $element-color;
+  color: $text-color;
   font-size: 1.4rem;
   letter-spacing: .15rem;
   font-weight: 600;
@@ -30,12 +30,12 @@
   width: 15rem;
   height: 4rem;
   z-index: -1;
-  color: var(--text-color);
+  color: $text-color;
 
   &:checked {
     &::after {
       box-shadow: inset .5rem -.4rem 1rem rgba(black, .35), inset -.5rem -.4rem 1rem rgba(black, .35);
-      background-color: var(--element-color);
+      background-color: $element-color;
     }
   }
 
@@ -68,7 +68,7 @@
   &::after {
     width: 15rem;
     height: 4rem;
-    background-color: var(--element-color);
+    background-color: $element-color;
     position: absolute;
     top: 0;
     left: 0;

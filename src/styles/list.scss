@@ -7,12 +7,12 @@
   z-index: -5;
 
   &__title {
-    border: .01rem solid $gray;
+    //border: .01rem solid $text-color;
     border-radius: 1.5rem;
     padding: 2rem 0 2rem 3rem; 
     box-shadow: 0 .4rem .4rem rgba(black, .25);
     margin-left: 0;
-    background-color: var(--element-color);
+    background-color: $element-color;
   }
 
   &__list {
@@ -21,9 +21,9 @@
     grid-gap: 2rem;
 
     position: relative;
-    background-color: var(--element-color);
+    background-color: $element-color;
 
-    border: .01rem solid $gray;
+    //border: .01rem solid $text-color;
     border-radius: 1.5rem;
     padding: 3rem;
     box-shadow: 0 .4rem .4rem rgba(black, .25);
@@ -62,11 +62,11 @@
     border-radius: .5rem;
     outline: none;
     border: none;
-    box-shadow: 0 .2rem .4rem rgba($gray, .35);
+    box-shadow: 0 .2rem .4rem rgba($text-color, .35);
     cursor: pointer;
 
     &_del {
-      background: linear-gradient(45deg, var(--delete-bg-color-dark), var(--delete-bg-color-light) 100%);
+      background: linear-gradient(45deg, $delete-btn-color-light, $delete-btn-color-dark 100%);
 
       grid-column: 4;
 
@@ -76,7 +76,7 @@
     }
 
     &_completed {
-      background: linear-gradient(45deg, var(--complete-bg-color-dark), var(--complete-bg-color-light));
+      background: linear-gradient(45deg, $complete-btn-color-light, $complete-btn-color-dark);
 
       grid-row: 3;
       grid-column: 1;

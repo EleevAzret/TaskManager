@@ -1,9 +1,9 @@
 .form {
-  border: .01rem solid $gray;
+  //border: .01rem solid $text-color;
   padding: 5rem;
   border-radius: 1.5rem;
   box-shadow: 0 .4rem .4rem rgba(black, .35);
-  background: linear-gradient(48deg, var(--form-bg-gradient-color-light), var(--form-bg-gradient-color-light));
+  background: linear-gradient(48deg, $form-bg-color-light, $form-bg-color-dark);
   margin-bottom: 8rem;
 
   display: grid;
