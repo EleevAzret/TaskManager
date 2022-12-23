@@ -7,7 +7,7 @@
   <link href="https://fonts.googleapis.com/css2?family=Roboto+Mono:wght@200;300;400;500;600;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="styles/main.css">
   <script src="js/script.js" defer></script>
-  <title>Document</title>
+  <title>TaskManager</title>
 </head>
 <body>
   <div class="wrapper">
@@ -16,17 +16,17 @@
       <input type="radio" name="color-theme" id="dark" class="color-theme__btn color-theme__btn_dark">
     </div>
     <form class="form" name="tasks">
-      <h2 class="title title_ml20">New Task</h2>
-      <input type="text" name="title" class="form__title" placeholder="Your title">
-      <input type="text" name="text" class="form__value" placeholder="Your value">
-      <input type="submit" name="btn" class="btn" value="Create Task">
+      <h2 class="title title_ml20">Новая задача</h2>
+      <input type="text" name="title" class="form__title" placeholder="Заголовок">
+      <input type="text" name="text" class="form__value" placeholder="Текст">
+      <input type="submit" name="btn" class="btn" value="Создать задачу">
     </form>
     <div class="tasks">
-      <h2 class="title tasks__title">Your Tasks</h2>
+      <h2 class="title tasks__title">Ваши задачи</h2>
       <ul class="tasks__list" id="list">
         <input type="radio" name="tasks" id="allTasks" checked class="radioBtn radioBtn_allTasks">
         <input type="radio" name="tasks" id="notCompletedTasks" class="radioBtn radioBtn_notCompletedTasks">
-        <span class="tasks__none" id="none">You dont have tasks</span>
+        <span class="tasks__none" id="none">У вас нет задач</span>
       </ul>
     </div>
   </div>

@@ -2,20 +2,14 @@ let tasksArr = [
   {
     _id: 'b11pah9uscs2rjekz',
     completed: false,
-    title: 'Lorem ipsum dolor sit.',
-    body: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Fugiat cumque dignissimos inventore harum quibusdam.',
+    title: 'Это мини проект',
+    body: 'Небольшой менеджер задач, который призван показать, что я могу написать на нативном js без использования сложных технологий',
   },
   {
     _id: 'ehfijb6bxoktof7i7',
     completed: false,
-    title: 'Lorem ipsum dolor.',
-    body: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Tempora veniam id sit officia quaerat autem omnis, deleniti et quis!',
-  },
-  {
-    _id: 'dbt6cns9jb7y45gfn',
-    completed: false,
-    title: 'dolor sit.',
-    body: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Soluta, quasi?',
+    title: 'Здесь вы можете',
+    body: 'Создавать различные задачи отмечать их выполнеными, удалять, фильтровать задачи. А также менять тему оформления',
   },
 ];
 
@@ -128,12 +122,12 @@ let colors = {
 
     let btnDel = document.createElement('button');
     btnDel.classList.add('item__action', 'item__action_del');
-    btnDel.textContent = 'Delete task';
+    btnDel.textContent = 'Удалить';
     btnDel.id = 'delete';
 
     let btnCompleted = document.createElement('button');
     btnCompleted.classList.add('item__action', 'item__action_completed');
-    btnCompleted.textContent = 'Complete task';
+    btnCompleted.textContent = 'Выполнено';
     btnCompleted.id = 'complete';
 
     item.appendChild(h3);
@@ -186,7 +180,7 @@ let colors = {
   function confirmDelte(parent) {
     let _id = parent.dataset.id;
 
-    let isConfirm = confirm(`You shure to delete? ${taskObj[_id].title}`);
+    let isConfirm = confirm(`Вы хотите удалить? ${taskObj[_id].title}`);
 
     if(!isConfirm) return;
 

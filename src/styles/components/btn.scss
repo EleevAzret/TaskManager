@@ -47,7 +47,7 @@
     }
 
     &::after {
-      content: "Not completed";
+      content: "Незавершенные";
       border-top-right-radius: 1.5rem;
     }
   }
@@ -60,7 +60,7 @@
     }
 
     &::after {
-      content: "All tasks";
+      content: "Все задачи";
       border-top-left-radius: 1.5rem;
     }
   }
