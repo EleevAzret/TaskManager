@@ -6,15 +6,15 @@ const autoprefixer = require('gulp-autoprefixer');
 const path = require('path');
 const browserSync = require('browser-sync').create();
 
-//cleaning dist directory
+//cleaning docs directory
 function clean() {
-	return del('./dist/*');
+	return del('./docs/*');
 }
 
 //task for html files
 function html() {
 	return gulp.src('./src/**/*.html')
-					.pipe(gulp.dest('./dist'));
+					.pipe(gulp.dest('./docs'));
 }
 
 //task compilation main.scss file to css
@@ -23,33 +23,33 @@ function styles() {
 					.pipe(sass().on('error', sass.logError))
 					.pipe(autoprefixer())
 					.pipe(gcmq())
-					.pipe(gulp.dest('./dist/styles'))
+					.pipe(gulp.dest('./docs/styles'))
 					.pipe(browserSync.stream());
 }
 
-//task for transfer default css files in dist directory
+//task for transfer default css files in docs directory
 function defaultStyles() {
 	return gulp.src('./src/styles/defaults/**/*')
-					.pipe(gulp.dest('./dist/styles/default'));
+					.pipe(gulp.dest('./docs/styles/default'));
 }
 
-//task for transfer JavaScript files in dist directory
+//task for transfer JavaScript files in docs directory
 function js() {
 	return gulp.src('./src/js/**/*.js')
-					.pipe(gulp.dest('./dist/js'));
+					.pipe(gulp.dest('./docs/js'));
 }
 
-//task for transfer all images in dist directory
+//task for transfer all images in docs directory
 function img() {
 	return gulp.src('./src/img/**/*')
-					.pipe(gulp.dest('./dist/img'));
+					.pipe(gulp.dest('./docs/img'));
 }
 
 //task that looks for changes in files
 function watch() {
 	browserSync.init({
 		server: {
-				baseDir: "./dist/"
+				baseDir: "./docs/"
 		}
 	});
 
